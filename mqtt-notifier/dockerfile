@@ -1,0 +1,16 @@
+# 1. 使用 Python 3.12.4 作為基礎映像檔
+FROM python:3.12.4-slim
+
+# 2. 設置工作目錄
+WORKDIR /app
+
+# 3. 複製 requirements.txt 安裝依賴檔
+COPY requirements.txt .
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+# 4. 複製app.py腳本代碼到容器中
+COPY app.py .
+
+# 5. 指定容器啟動運行命令
+CMD ["python", "app.py"]
